@@ -1,0 +1,39 @@
+name: HSW365 Daily Booking Outreach
+
+on:
+  schedule:
+    # 9am ET daily (13:00 UTC) — matches your other GTA6HQ/QUEENEE cron pattern
+    - cron: "0 13 * * *"
+  workflow_dispatch: {}
+
+jobs:
+  outreach:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run booking outreach bot
+        env:
+          GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SEND_PROVIDER: ${{ secrets.SEND_PROVIDER }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
+        run: python main.py
+
+      - name: Commit updated leads/log data
+        run: |
+          git config user.name "hsw365-booking-bot"
+          git config user.email "hsw365media@gmail.com"
+          git add data/leads.json data/contacted_log.json
+          git diff --quiet --cached || git commit -m "Booking outreach run: $(date -u +%Y-%m-%d)"
+          git push
