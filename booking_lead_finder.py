@@ -51,7 +51,10 @@ def search_places(query):
     }
     resp = requests.get(PLACES_TEXTSEARCH_URL, params=params, timeout=15)
     resp.raise_for_status()
-    return resp.json().get("results", [])
+    data = resp.json()
+    print(f"[lead_finder]   API status: {data.get('status')} "
+          f"{data.get('error_message', '')}")
+    return data.get("results", [])
 
 
 def get_place_website(place_id):
