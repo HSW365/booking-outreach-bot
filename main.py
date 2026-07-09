@@ -9,7 +9,7 @@ Each run:
      ago and haven't replied/booked (up to MAX_FOLLOWUPS).
   4. Logs everything to data/contacted_log.json.
 
-Intended to run on a schedule (see .github/workflows/daily-booking-outreach.yml).
+Intended to run on a schedule (see .github/workflows/main.yml).
 Nothing here marks a lead "replied" or "booked" automatically — that's a
 manual status update (see tracker.py) once Elvin/the booking inbox gets a
 response, since this bot has no inbox-reading access by design.
@@ -114,8 +114,12 @@ def _send_followups(leads, sent_count):
 
 
 def run():
-    print("=== HSW365 Booking Outreach Bot ===")
+    print("=== HSW365 Booking Outreach Bot === MARKER-777 ===")
     print(f"Run date: {datetime.date.today().isoformat()}")
+    print(f"[main] SEND_PROVIDER = {config.SEND_PROVIDER}")
+    print(f"[main] GOOGLE_PLACES_API_KEY set: {bool(config.GOOGLE_PLACES_API_KEY)}")
+    print(f"[main] ANTHROPIC_API_KEY set: {bool(config.ANTHROPIC_API_KEY)}")
+    print(f"[main] SMTP_USER set: {bool(config.SMTP_USER)}")
 
     if config.GOOGLE_PLACES_API_KEY:
         booking_lead_finder.run()
