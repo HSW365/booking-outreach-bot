@@ -1,0 +1,116 @@
+[
+  {
+    "query": "auto repair shop South Jersey",
+    "status_code": 403,
+    "response_snippet": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Requests to this API places.googleapis.com method google.maps.places.v1.Places.SearchText are blocked.\",\n    \"status\": \"PERMISSION_DENIED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY",
+    "checked_at": "2026-07-15 14:14:00"
+  },
+  {
+    "query": "hair salon South Jersey",
+    "status_code": 403,
+    "response_snippet": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Requests to this API places.googleapis.com method google.maps.places.v1.Places.SearchText are blocked.\",\n    \"status\": \"PERMISSION_DENIED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY",
+    "checked_at": "2026-07-15 14:14:00"
+  },
+  {
+    "query": "barbershop South Jersey",
+    "status_code": 403,
+    "response_snippet": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Requests to this API places.googleapis.com method google.maps.places.v1.Places.SearchText are blocked.\",\n    \"status\": \"PERMISSION_DENIED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY",
+    "checked_at": "2026-07-15 14:14:00"
+  },
+  {
+    "query": "nail salon South Jersey",
+    "status_code": 403,
+    "response_snippet": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Requests to this API places.googleapis.com method google.maps.places.v1.Places.SearchText are blocked.\",\n    \"status\": \"PERMISSION_DENIED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY",
+    "checked_at": "2026-07-15 14:14:00"
+  },
+  {
+    "query": "restaurant Vineland NJ",
+    "status_code": 403,
+    "response_snippet": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Requests to this API places.googleapis.com method google.maps.places.v1.Places.SearchText are blocked.\",\n    \"status\": \"PERMISSION_DENIED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY",
+    "checked_at": "2026-07-15 14:14:01"
+  },
+  {
+    "query": "plumber South Jersey",
+    "status_code": 403,
+    "response_snippet": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Requests to this API places.googleapis.com method google.maps.places.v1.Places.SearchText are blocked.\",\n    \"status\": \"PERMISSION_DENIED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY",
+    "checked_at": "2026-07-15 14:14:01"
+  },
+  {
+    "query": "electrician South Jersey",
+    "status_code": 403,
+    "response_snippet": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Requests to this API places.googleapis.com method google.maps.places.v1.Places.SearchText are blocked.\",\n    \"status\": \"PERMISSION_DENIED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY",
+    "checked_at": "2026-07-15 14:14:01"
+  },
+  {
+    "query": "landscaping company South Jersey",
+    "status_code": 403,
+    "response_snippet": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Requests to this API places.googleapis.com method google.maps.places.v1.Places.SearchText are blocked.\",\n    \"status\": \"PERMISSION_DENIED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY",
+    "checked_at": "2026-07-15 14:14:01"
+  },
+  {
+    "query": "cleaning service South Jersey",
+    "status_code": 403,
+    "response_snippet": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Requests to this API places.googleapis.com method google.maps.places.v1.Places.SearchText are blocked.\",\n    \"status\": \"PERMISSION_DENIED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY",
+    "checked_at": "2026-07-15 14:14:02"
+  },
+  {
+    "query": "daycare center South Jersey",
+    "status_code": 403,
+    "response_snippet": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Requests to this API places.googleapis.com method google.maps.places.v1.Places.SearchText are blocked.\",\n    \"status\": \"PERMISSION_DENIED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY",
+    "checked_at": "2026-07-15 14:14:02"
+  },
+  {
+    "query": "tax preparer South Jersey",
+    "status_code": 403,
+    "response_snippet": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Requests to this API places.googleapis.com method google.maps.places.v1.Places.SearchText are blocked.\",\n    \"status\": \"PERMISSION_DENIED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY",
+    "checked_at": "2026-07-15 14:14:02"
+  },
+  {
+    "query": "insurance agency South Jersey",
+    "status_code": 403,
+    "response_snippet": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Requests to this API places.googleapis.com method google.maps.places.v1.Places.SearchText are blocked.\",\n    \"status\": \"PERMISSION_DENIED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY",
+    "checked_at": "2026-07-15 14:14:02"
+  },
+  {
+    "query": "real estate agent South Jersey",
+    "status_code": 403,
+    "response_snippet": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Requests to this API places.googleapis.com method google.maps.places.v1.Places.SearchText are blocked.\",\n    \"status\": \"PERMISSION_DENIED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY",
+    "checked_at": "2026-07-15 14:14:03"
+  },
+  {
+    "query": "law office South Jersey",
+    "status_code": 403,
+    "response_snippet": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Requests to this API places.googleapis.com method google.maps.places.v1.Places.SearchText are blocked.\",\n    \"status\": \"PERMISSION_DENIED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY",
+    "checked_at": "2026-07-15 14:14:03"
+  },
+  {
+    "query": "dentist South Jersey",
+    "status_code": 403,
+    "response_snippet": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Requests to this API places.googleapis.com method google.maps.places.v1.Places.SearchText are blocked.\",\n    \"status\": \"PERMISSION_DENIED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY",
+    "checked_at": "2026-07-15 14:14:03"
+  },
+  {
+    "query": "chiropractor South Jersey",
+    "status_code": 403,
+    "response_snippet": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Requests to this API places.googleapis.com method google.maps.places.v1.Places.SearchText are blocked.\",\n    \"status\": \"PERMISSION_DENIED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY",
+    "checked_at": "2026-07-15 14:14:03"
+  },
+  {
+    "query": "auto repair shop Camden NJ",
+    "status_code": 403,
+    "response_snippet": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Requests to this API places.googleapis.com method google.maps.places.v1.Places.SearchText are blocked.\",\n    \"status\": \"PERMISSION_DENIED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY",
+    "checked_at": "2026-07-15 14:14:04"
+  },
+  {
+    "query": "restaurant Cherry Hill NJ",
+    "status_code": 403,
+    "response_snippet": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Requests to this API places.googleapis.com method google.maps.places.v1.Places.SearchText are blocked.\",\n    \"status\": \"PERMISSION_DENIED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY",
+    "checked_at": "2026-07-15 14:14:04"
+  },
+  {
+    "query": "salon Pennsauken NJ",
+    "status_code": 403,
+    "response_snippet": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Requests to this API places.googleapis.com method google.maps.places.v1.Places.SearchText are blocked.\",\n    \"status\": \"PERMISSION_DENIED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY",
+    "checked_at": "2026-07-15 14:14:04"
+  }
+]
