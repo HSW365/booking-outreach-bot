@@ -140,9 +140,14 @@ def _format_address(tags):
     return ", ".join(p for p in (line1, city_state) if p) or None
 
 
+MAX_RESULTS_PER_CATEGORY = 15  # keep runs fast; OSM areas can return hundreds
+MAX_EMAIL_SCRAPES_PER_RUN = 25  # each scrape = up to ~6 HTTP calls to a business site
+
+
 def run():
     leads = _load_json(config.OFFER_LEADS_FILE, [])
     known_ids = {lead["place_id"] for lead in leads if lead.get("place_id")}
+    scrapes_done = 0
 
     new_count = 0
     for category, tag_pairs in CATEGORY_TAGS.items():
@@ -153,9 +158,10 @@ def run():
             print(f"[offer_lead_finder] search failed for '{category}': {e}")
             continue
 
-        print(f"[offer_lead_finder]   {len(elements)} results returned")
+        print(f"[offer_lead_finder]   {len(elements)} results returned, "
+              f"processing up to {MAX_RESULTS_PER_CATEGORY}")
 
-        for el in elements:
+        for el in elements[:MAX_RESULTS_PER_CATEGORY]:
             osm_id = f"{el.get('type')}/{el.get('id')}"
             tags = el.get("tags", {})
             name = tags.get("name")
@@ -164,7 +170,10 @@ def run():
 
             website = tags.get("website") or tags.get("contact:website")
             phone = tags.get("phone") or tags.get("contact:phone")
-            email = find_email_on_site(website) if website else None
+            email = None
+            if website and scrapes_done < MAX_EMAIL_SCRAPES_PER_RUN:
+                email = find_email_on_site(website)
+                scrapes_done += 1
 
             lead = {
                 "place_id": osm_id,
