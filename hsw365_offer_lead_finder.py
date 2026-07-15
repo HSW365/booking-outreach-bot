@@ -97,7 +97,12 @@ def search_overpass(category, tag_pairs):
             )
     ql = f"[out:json][timeout:30];\n(\n  " + "\n  ".join(clauses) + "\n);\nout center tags;"
 
-    resp = requests.post(OVERPASS_URL, data={"data": ql}, timeout=45)
+    resp = requests.post(
+        OVERPASS_URL,
+        data={"data": ql},
+        headers={"User-Agent": "HSW365Media-LeadFinder/1.0 (hsw365media@gmail.com)"},
+        timeout=45,
+    )
     _log_debug(category, resp.status_code, resp.text)
     if resp.status_code != 200:
         print(f"[offer_lead_finder]   Overpass error {resp.status_code}: {resp.text[:300]}")
