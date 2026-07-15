@@ -34,6 +34,27 @@ FIELD_MASK = (
     "places.websiteUri,places.nationalPhoneNumber"
 )
 
+DEBUG_FILE = os.path.join(
+    os.environ.get("OFFER_DATA_DIR", os.path.join(os.path.dirname(__file__), "data")),
+    "hsw365_offer_debug.json",
+)
+_debug_entries = []
+
+
+def _log_debug(query, status_code, body_snippet):
+    _debug_entries.append({
+        "query": query,
+        "status_code": status_code,
+        "response_snippet": body_snippet[:300],
+        "checked_at": time.strftime("%Y-%m-%d %H:%M:%S"),
+    })
+
+
+def _flush_debug():
+    os.makedirs(os.path.dirname(DEBUG_FILE), exist_ok=True)
+    with open(DEBUG_FILE, "w") as f:
+        json.dump(_debug_entries, f, indent=2)
+
 
 def _load_json(path, default):
     if os.path.exists(path):
@@ -71,6 +92,7 @@ def search_places(query):
         },
     }
     resp = requests.post(PLACES_SEARCH_URL, headers=headers, json=body, timeout=15)
+    _log_debug(query, resp.status_code, resp.text)
     if resp.status_code != 200:
         print(f"[offer_lead_finder]   API error {resp.status_code}: {resp.text[:300]}")
         return []
@@ -141,6 +163,7 @@ def run():
             print(f"[offer_lead_finder]   + {name} — email: {email or 'NOT FOUND'}")
 
     _save_json(config.OFFER_LEADS_FILE, leads)
+    _flush_debug()
     print(f"[offer_lead_finder] done. {new_count} new leads added. {len(leads)} total in file.")
 
 
