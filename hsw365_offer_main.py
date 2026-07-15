@@ -102,14 +102,10 @@ def run():
     print("=== HSW365 Front Desk + Website Offer Bot ===")
     print(f"Run date: {datetime.date.today().isoformat()}")
     print(f"[offer_main] SEND_PROVIDER = {config.SEND_PROVIDER}")
-    print(f"[offer_main] GOOGLE_PLACES_API_KEY set: {bool(config.GOOGLE_PLACES_API_KEY)}")
+    print(f"[offer_main] lead source = OpenStreetMap Overpass (free, no key needed)")
     print(f"[offer_main] SMTP_USER set: {bool(config.SMTP_USER)}")
 
-    if config.GOOGLE_PLACES_API_KEY:
-        hsw365_offer_lead_finder.run()
-    else:
-        print("[offer_main] GOOGLE_PLACES_API_KEY not set — skipping lead discovery, "
-              "working off existing data/hsw365_offer_leads.json only.")
+    hsw365_offer_lead_finder.run()
 
     leads = _load_json(config.OFFER_LEADS_FILE, [])
     _save_json(config.OFFER_LEADS_FILE, leads)  # ensure the file exists even if empty

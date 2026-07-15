@@ -20,12 +20,10 @@ jobs:
 
       - name: Run HSW365 offer outreach bot
         env:
-          GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
           SEND_PROVIDER: ${{ secrets.SEND_PROVIDER }}
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-          OFFER_FROM_EMAIL: ${{ secrets.SMTP_USER }}
         run: python hsw365_offer_main.py
 
       - name: Commit updated leads/log data

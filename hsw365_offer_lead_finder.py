@@ -4,14 +4,16 @@ salons, contractors, restaurants, dentists, etc.) around South Jersey /
 Philadelphia for the HSW365 Front Desk + Website offer campaign, and
 attaches a contact email where one can be found on their existing site.
 
-Businesses that already have a site (and therefore a scrapable email) are
-naturally the easiest to reach by email — the pitch script already handles
-the "I already have a website" objection by pivoting to the front-desk
-assistant alone. Businesses with NO website/email are better reached by
-the CallTwin calling+SMS agent (see calltwin_lead_hunter.py), not this bot.
+Uses OpenStreetMap's Overpass API — completely free, no API key, no
+billing account required. (Originally used Google Places API (New), but
+that requires an active Google Cloud billing account even for free-tier
+usage, which isn't available right now — Overpass needs nothing.)
 
-Uses the Places API (New) — Text Search endpoint.
-Requires: GOOGLE_PLACES_API_KEY (with "Places API (New)" enabled)
+Coverage/tradeoffs vs Google Places: OSM data is community-maintained, so
+some small businesses are missing or have stale info, and phone/website
+tags are filled in less consistently than Google's. It's still a solid,
+genuinely free source for this — and the email step only needs the
+`website` tag to be present, same as before.
 
 Usage:
     python hsw365_offer_lead_finder.py
@@ -28,11 +30,26 @@ import config
 
 EMAIL_RE = re.compile(r"[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}")
 
-PLACES_SEARCH_URL = "https://places.googleapis.com/v1/places:searchText"
-FIELD_MASK = (
-    "places.id,places.displayName,places.formattedAddress,"
-    "places.websiteUri,places.nationalPhoneNumber"
-)
+OVERPASS_URL = "https://overpass-api.de/api/interpreter"
+
+# Business category -> OSM tag(s) that best represent it. Categories with
+# no reliable OSM equivalent (e.g. "cleaning service") are left out rather
+# than guessing with unreliable tags.
+CATEGORY_TAGS = {
+    "auto repair shop": [("shop", "car_repair")],
+    "hair salon": [("shop", "hairdresser")],
+    "nail salon": [("shop", "beauty")],
+    "restaurant": [("amenity", "restaurant")],
+    "plumber": [("craft", "plumber")],
+    "electrician": [("craft", "electrician")],
+    "landscaping company": [("craft", "gardener")],
+    "dentist": [("amenity", "dentist")],
+    "real estate agent": [("office", "estate_agent")],
+    "law office": [("office", "lawyer")],
+    "insurance agency": [("office", "insurance")],
+    "tax preparer": [("office", "tax_advisor")],
+    "daycare center": [("amenity", "childcare")],
+}
 
 DEBUG_FILE = os.path.join(
     os.environ.get("OFFER_DATA_DIR", os.path.join(os.path.dirname(__file__), "data")),
@@ -69,40 +86,31 @@ def _save_json(path, data):
         json.dump(data, f, indent=2)
 
 
-def search_places(query):
-    """One Places API (New) Text Search call. Returns list of place dicts."""
-    if not config.GOOGLE_PLACES_API_KEY:
-        raise RuntimeError("GOOGLE_PLACES_API_KEY not set")
+def search_overpass(category, tag_pairs):
+    """One Overpass QL call for a category. Returns list of element dicts."""
+    clauses = []
+    for key, value in tag_pairs:
+        for kind in ("node", "way"):
+            clauses.append(
+                f'{kind}["{key}"="{value}"](around:{config.SEARCH_RADIUS_METERS},'
+                f'{config.SEARCH_LAT},{config.SEARCH_LNG});'
+            )
+    ql = f"[out:json][timeout:30];\n(\n  " + "\n  ".join(clauses) + "\n);\nout center tags;"
 
-    headers = {
-        "Content-Type": "application/json",
-        "X-Goog-Api-Key": config.GOOGLE_PLACES_API_KEY,
-        "X-Goog-FieldMask": FIELD_MASK,
-    }
-    body = {
-        "textQuery": query,
-        "locationBias": {
-            "circle": {
-                "center": {
-                    "latitude": config.SEARCH_LAT,
-                    "longitude": config.SEARCH_LNG,
-                },
-                "radius": float(config.SEARCH_RADIUS_METERS),
-            }
-        },
-    }
-    resp = requests.post(PLACES_SEARCH_URL, headers=headers, json=body, timeout=15)
-    _log_debug(query, resp.status_code, resp.text)
+    resp = requests.post(OVERPASS_URL, data={"data": ql}, timeout=45)
+    _log_debug(category, resp.status_code, resp.text)
     if resp.status_code != 200:
-        print(f"[offer_lead_finder]   API error {resp.status_code}: {resp.text[:300]}")
+        print(f"[offer_lead_finder]   Overpass error {resp.status_code}: {resp.text[:300]}")
         return []
-    return resp.json().get("places", [])
+    return resp.json().get("elements", [])
 
 
 def find_email_on_site(website):
     """Try a handful of common contact page paths, return first email found."""
     if not website:
         return None
+    if not website.startswith("http"):
+        website = "https://" + website
     base = website.rstrip("/")
     for path in config.CONTACT_PATH_CANDIDATES:
         url = f"{base}/{path}".rstrip("/")
@@ -120,47 +128,58 @@ def find_email_on_site(website):
     return None
 
 
+def _format_address(tags):
+    parts = [tags.get("addr:housenumber"), tags.get("addr:street")]
+    line1 = " ".join(p for p in parts if p)
+    city_state = ", ".join(p for p in (tags.get("addr:city"), tags.get("addr:state")) if p)
+    return ", ".join(p for p in (line1, city_state) if p) or None
+
+
 def run():
     leads = _load_json(config.OFFER_LEADS_FILE, [])
-    known_place_ids = {lead["place_id"] for lead in leads if lead.get("place_id")}
+    known_ids = {lead["place_id"] for lead in leads if lead.get("place_id")}
 
     new_count = 0
-    for query in config.OFFER_SEARCH_QUERIES:
-        print(f"[offer_lead_finder] searching: {query}")
+    for category, tag_pairs in CATEGORY_TAGS.items():
+        print(f"[offer_lead_finder] searching: {category}")
         try:
-            results = search_places(query)
+            elements = search_overpass(category, tag_pairs)
         except Exception as e:
-            print(f"[offer_lead_finder] search failed for '{query}': {e}")
+            print(f"[offer_lead_finder] search failed for '{category}': {e}")
             continue
 
-        print(f"[offer_lead_finder]   {len(results)} results returned")
+        print(f"[offer_lead_finder]   {len(elements)} results returned")
 
-        for place in results:
-            place_id = place.get("id")
-            if not place_id or place_id in known_place_ids:
+        for el in elements:
+            osm_id = f"{el.get('type')}/{el.get('id')}"
+            tags = el.get("tags", {})
+            name = tags.get("name")
+            if not osm_id or not name or osm_id in known_ids:
                 continue
 
-            website = place.get("websiteUri")
+            website = tags.get("website") or tags.get("contact:website")
+            phone = tags.get("phone") or tags.get("contact:phone")
             email = find_email_on_site(website) if website else None
-            name = (place.get("displayName") or {}).get("text", "Unknown")
 
             lead = {
-                "place_id": place_id,
+                "place_id": osm_id,
                 "name": name,
-                "address": place.get("formattedAddress"),
-                "phone": place.get("nationalPhoneNumber"),
+                "address": _format_address(tags),
+                "phone": phone,
                 "website": website,
                 "email": email,
-                "source_query": query,
+                "source_query": category,
                 "status": "found",
                 "found_at": time.strftime("%Y-%m-%d"),
                 "last_contacted": None,
                 "touches_sent": 0,
             }
             leads.append(lead)
-            known_place_ids.add(place_id)
+            known_ids.add(osm_id)
             new_count += 1
             print(f"[offer_lead_finder]   + {name} — email: {email or 'NOT FOUND'}")
+
+        time.sleep(1)  # be polite to the free public Overpass instance
 
     _save_json(config.OFFER_LEADS_FILE, leads)
     _flush_debug()
