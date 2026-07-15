@@ -32,7 +32,7 @@ jobs:
         run: |
           git config user.name "hsw365-offer-bot"
           git config user.email "hsw365media@gmail.com"
-          git add data/hsw365_offer_leads.json data/hsw365_offer_contacted_log.json
+          git add data/
           git diff --quiet --cached || git commit -m "HSW365 offer outreach run: $(date -u +%Y-%m-%d)"
           git pull --rebase origin main
           git push

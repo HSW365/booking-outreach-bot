@@ -112,6 +112,9 @@ def run():
               "working off existing data/hsw365_offer_leads.json only.")
 
     leads = _load_json(config.OFFER_LEADS_FILE, [])
+    _save_json(config.OFFER_LEADS_FILE, leads)  # ensure the file exists even if empty
+    _save_json(config.OFFER_LOG_FILE, _load_json(config.OFFER_LOG_FILE, []))  # same for the log
+
     if not leads:
         print("[offer_main] no leads on file. Nothing to send.")
         return
