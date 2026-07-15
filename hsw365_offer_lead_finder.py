@@ -30,6 +30,21 @@ import config
 
 EMAIL_RE = re.compile(r"[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}")
 
+# Website templates/themes commonly leave one of these in their boilerplate
+# HTML (mailto placeholders, example addresses, etc). Never treat these as
+# a real contact — better to have no email than a fake one.
+PLACEHOLDER_EMAIL_PATTERNS = (
+    "@domain.com", "@example.com", "@example.org", "@test.com",
+    "@yoursite.com", "@yourdomain.com", "@website.com", "@company.com",
+    "@sample.com", "@yourcompany.com",
+    "user@", "you@", "name@", "test@", "someone@", "youremail@",
+)
+
+
+def _is_placeholder_email(email):
+    e = email.lower()
+    return any(p in e for p in PLACEHOLDER_EMAIL_PATTERNS)
+
 OVERPASS_URL = "https://overpass-api.de/api/interpreter"
 
 # Business category -> OSM tag(s) that best represent it. Categories with
@@ -125,8 +140,11 @@ def find_email_on_site(website):
                 match = EMAIL_RE.search(r.text)
                 if match:
                     email = match.group(0)
-                    if not email.lower().endswith((".png", ".jpg", ".gif")):
-                        return email
+                    if email.lower().endswith((".png", ".jpg", ".gif")):
+                        continue
+                    if _is_placeholder_email(email):
+                        continue
+                    return email
         except requests.RequestException:
             continue
         time.sleep(0.5)
