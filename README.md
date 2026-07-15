@@ -100,6 +100,40 @@ python tracker.py set "Example Community College" booked
   sends per day (~500) and is more likely to get flagged if volume grows.
   Fine at 8 emails/day.
 
+## Campaign 2: HSW365 Front Desk + Website Offer
+
+A second, independent campaign in this same repo that sells local business
+owners (auto repair, salons, contractors, restaurants, dentists, etc.) on
+the **HSW365Media Modern Website + 24/7 AI Front Desk Assistant** bundle.
+This is the email arm of the same "clone agent" persona used by the
+CallTwin calling+SMS agent — see `calltwin` repo,
+`docs/hsw365_frontdesk_website_agent.md` for the full script.
+
+- **`hsw365_offer_lead_finder.py`** — searches Google Places for local
+  service businesses (same categories CallTwin's `calltwin_lead_hunter.py`
+  targets) and scrapes an email off their existing site where one exists.
+  Businesses with no site/no email are a better fit for the CallTwin
+  calling agent instead — this bot just skips them and tells you the count.
+- **`hsw365_offer_composer.py`** — static (not LLM-generated) 3-touch
+  sequence, copy-matched to the approved script and the CallTwin SMS
+  follow-ups: touch 1 (intro), touch 2 (~4 days later), touch 3 (~7 days
+  after that, then done).
+- **`hsw365_offer_main.py`** — orchestrates the above and sends via the
+  same `outreach_sender.py`, under the `HSW365Media` sender identity
+  (`OFFER_FROM_NAME` / `OFFER_REPLY_TO` in `config.py`) instead of the
+  booking campaign's identity.
+- Runs on its own schedule: `.github/workflows/hsw365-offer.yml`, daily at
+  11am ET (offset from the booking bot's 9am ET run so both don't hit Gmail
+  SMTP at the same moment).
+- Leads/log tracked separately in `data/hsw365_offer_leads.json` /
+  `data/hsw365_offer_contacted_log.json`, so it never touches the booking
+  campaign's data.
+- Check/update status: `python tracker.py summary --offer` /
+  `python tracker.py set "Example Auto Repair" replied --offer`.
+- Uses the same secrets already set for the booking bot
+  (`GOOGLE_PLACES_API_KEY`, `SMTP_USER`/`SMTP_PASSWORD` or
+  `SENDGRID_API_KEY`) — no new secrets required to turn this on.
+
 ## Notes / things to know
 
 - Emails found by scraping public "contact"/"about"/"staff" pages aren't

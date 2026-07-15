@@ -11,14 +11,14 @@ import requests
 import config
 
 
-def send_via_sendgrid(to_email, subject, body):
+def send_via_sendgrid(to_email, subject, body, from_name=None, reply_to=None):
     if not config.SENDGRID_API_KEY:
         raise RuntimeError("SENDGRID_API_KEY not set")
 
     payload = {
         "personalizations": [{"to": [{"email": to_email}]}],
-        "from": {"email": config.FROM_EMAIL, "name": config.FROM_NAME},
-        "reply_to": {"email": config.REPLY_TO},
+        "from": {"email": config.FROM_EMAIL, "name": from_name or config.FROM_NAME},
+        "reply_to": {"email": reply_to or config.REPLY_TO},
         "subject": subject,
         "content": [{"type": "text/plain", "value": body}],
     }
@@ -35,15 +35,15 @@ def send_via_sendgrid(to_email, subject, body):
         raise RuntimeError(f"SendGrid error {resp.status_code}: {resp.text}")
 
 
-def send_via_smtp(to_email, subject, body):
+def send_via_smtp(to_email, subject, body, from_name=None, reply_to=None):
     if not (config.SMTP_USER and config.SMTP_PASSWORD):
         raise RuntimeError("SMTP_USER / SMTP_PASSWORD not set")
 
     msg = MIMEText(body)
     msg["Subject"] = subject
-    msg["From"] = f"{config.FROM_NAME} <{config.SMTP_USER}>"
+    msg["From"] = f"{from_name or config.FROM_NAME} <{config.SMTP_USER}>"
     msg["To"] = to_email
-    msg["Reply-To"] = config.REPLY_TO
+    msg["Reply-To"] = reply_to or config.REPLY_TO
 
     with smtplib.SMTP(config.SMTP_HOST, config.SMTP_PORT) as server:
         server.starttls()
@@ -51,8 +51,11 @@ def send_via_smtp(to_email, subject, body):
         server.sendmail(config.SMTP_USER, [to_email], msg.as_string())
 
 
-def send_email(to_email, subject, body):
+def send_email(to_email, subject, body, from_name=None, reply_to=None):
+    """from_name/reply_to let a campaign send under its own identity (e.g.
+    the HSW365 offer campaign uses OFFER_FROM_NAME/OFFER_REPLY_TO) while
+    still going out through the same shared SMTP/SendGrid credentials."""
     if config.SEND_PROVIDER == "smtp":
-        send_via_smtp(to_email, subject, body)
+        send_via_smtp(to_email, subject, body, from_name=from_name, reply_to=reply_to)
     else:
-        send_via_sendgrid(to_email, subject, body)
+        send_via_sendgrid(to_email, subject, body, from_name=from_name, reply_to=reply_to)

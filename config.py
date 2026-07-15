@@ -112,3 +112,56 @@ MAX_FOLLOWUPS = int(os.environ.get("MAX_FOLLOWUPS", "2"))
 DATA_DIR = os.environ.get("DATA_DIR", os.path.join(os.path.dirname(__file__), "data"))
 LEADS_FILE = os.path.join(DATA_DIR, "leads.json")
 LOG_FILE = os.path.join(DATA_DIR, "contacted_log.json")
+
+# ---------------------------------------------------------------------------
+# CAMPAIGN 2: HSW365 FRONT DESK + WEBSITE OFFER
+# Separate from the speaker-booking campaign above. Sells local business
+# owners on the HSW365Media Modern Website + 24/7 AI Front Desk Assistant
+# bundle — same "clone agent" persona used by the CallTwin calling script
+# (see calltwin repo: docs/hsw365_frontdesk_website_agent.md).
+# ---------------------------------------------------------------------------
+
+OFFER_FROM_NAME = os.environ.get("OFFER_FROM_NAME", "HSW365Media")
+OFFER_FROM_EMAIL = os.environ.get("OFFER_FROM_EMAIL", BUSINESS_EMAIL)  # hsw365media@gmail.com
+OFFER_REPLY_TO = os.environ.get("OFFER_REPLY_TO", BOOKING_EMAIL)       # book@hoodstar365.com
+
+# Live demo / signup page for this offer (QUEENEE.io free-demo flow).
+OFFER_FUNNEL_LINK = os.environ.get(
+    "OFFER_FUNNEL_LINK", "https://hsw365.github.io/QUEENEE.github.io/signup.html"
+)
+
+# Same ICP as calltwin_lead_hunter.py — local service businesses that are
+# most likely to be losing money on missed calls / an outdated or missing
+# website. Text-search queries for the Places API (New), same market radius
+# as the booking campaign (South Jersey / Philly metro, see SEARCH_LAT/LNG).
+OFFER_SEARCH_QUERIES = [
+    "auto repair shop South Jersey",
+    "hair salon South Jersey",
+    "barbershop South Jersey",
+    "nail salon South Jersey",
+    "restaurant Vineland NJ",
+    "plumber South Jersey",
+    "electrician South Jersey",
+    "landscaping company South Jersey",
+    "cleaning service South Jersey",
+    "daycare center South Jersey",
+    "tax preparer South Jersey",
+    "insurance agency South Jersey",
+    "real estate agent South Jersey",
+    "law office South Jersey",
+    "dentist South Jersey",
+    "chiropractor South Jersey",
+    "auto repair shop Camden NJ",
+    "restaurant Cherry Hill NJ",
+    "salon Pennsauken NJ",
+]
+
+OFFER_DATA_DIR = os.environ.get("OFFER_DATA_DIR", DATA_DIR)
+OFFER_LEADS_FILE = os.path.join(OFFER_DATA_DIR, "hsw365_offer_leads.json")
+OFFER_LOG_FILE = os.path.join(OFFER_DATA_DIR, "hsw365_offer_contacted_log.json")
+
+OFFER_MAX_EMAILS_PER_RUN = int(os.environ.get("OFFER_MAX_EMAILS_PER_RUN", "8"))
+# Touch 2 fires ~3-4 days after touch 1, touch 3 ~7 days after touch 2 —
+# matches the SMS sequence timing in the CallTwin agent script.
+OFFER_TOUCH2_AFTER_DAYS = int(os.environ.get("OFFER_TOUCH2_AFTER_DAYS", "4"))
+OFFER_TOUCH3_AFTER_DAYS = int(os.environ.get("OFFER_TOUCH3_AFTER_DAYS", "7"))
