@@ -152,5 +152,82 @@
     "email": "frontdeskPA007@restore.com",
     "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5a478bee46e88-3140e538368sm18096813eec.12 - gsmtp')",
     "date": "2026-07-16"
+  },
+  {
+    "type": "send_error",
+    "lead": "RE/MAX@HOME",
+    "email": "info@ocfrealty.com",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials d75a77b69052e-51caaf621e6sm155960481cf.24 - gsmtp')",
+    "date": "2026-07-16"
+  },
+  {
+    "type": "send_error",
+    "lead": "Edelstein Martin & Nelson",
+    "email": "lnelson@law-pa.com",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials d75a77b69052e-51caacad0cfsm163547921cf.8 - gsmtp')",
+    "date": "2026-07-16"
+  },
+  {
+    "type": "send_error",
+    "lead": "Law Offices Of Arthur R. Braitman, PLLC",
+    "email": "arbraitman@verizon.net",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials d75a77b69052e-51caaf5f61csm162059231cf.22 - gsmtp')",
+    "date": "2026-07-16"
+  },
+  {
+    "type": "send_error",
+    "lead": "Law Offices Of Eugene P Tinari",
+    "email": "eugene@etinarilaw.com",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials 6a1803df08f44-8ffd87c8d4csm238735416d6.44 - gsmtp')",
+    "date": "2026-07-16"
+  },
+  {
+    "type": "send_error",
+    "lead": "Broadley's Plumbing, Heating & Air Conditioning",
+    "email": "christina@broadleys.net",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials 6a1803df08f44-9036e27f765sm183698856d6.11 - gsmtp')",
+    "date": "2026-07-16"
+  },
+  {
+    "type": "send_error",
+    "lead": "Linc Electric Inc",
+    "email": "lincelectric@gmail.com",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials d75a77b69052e-51caafd8b4fsm163057941cf.31 - gsmtp')",
+    "date": "2026-07-16"
+  },
+  {
+    "type": "send_error",
+    "lead": "Chelsvig Electric",
+    "email": "info@chelsvigelectric.com",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials 6a1803df08f44-8ffd50e081dsm222099666d6.9 - gsmtp')",
+    "date": "2026-07-16"
+  },
+  {
+    "type": "send_error",
+    "lead": "Sandra E. Grzybicki Pediatric & Adolescent Dentistry",
+    "email": "dr.grzybicki@verizon.net",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials d75a77b69052e-51caae23f42sm156113771cf.19 - gsmtp')",
+    "date": "2026-07-16"
+  },
+  {
+    "type": "send_error",
+    "lead": "Wahl Family Dentistry",
+    "email": "info@wahlfamilydentistry.com",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials d75a77b69052e-51f9456a02asm17458811cf.9 - gsmtp')",
+    "date": "2026-07-16"
+  },
+  {
+    "type": "send_error",
+    "lead": "Main Street Children's Dentistry & Orthodontics",
+    "email": "mselktonofc@dentalcarealliance.com",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials 6a1803df08f44-907611e58c6sm30952346d6.40 - gsmtp')",
+    "date": "2026-07-16"
+  },
+  {
+    "type": "send_error",
+    "lead": "Restore Hyper Wellness",
+    "email": "frontdeskPA007@restore.com",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials af79cd13be357-930a9d13ac6sm110143485a.3 - gsmtp')",
+    "date": "2026-07-16"
   }
 ]
