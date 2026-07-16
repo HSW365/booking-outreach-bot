@@ -1,1 +1,79 @@
-[]
+[
+  {
+    "type": "send_error",
+    "lead": "RE/MAX@HOME",
+    "email": "info@ocfrealty.com",
+    "error": "SENDGRID_API_KEY not set",
+    "date": "2026-07-16"
+  },
+  {
+    "type": "send_error",
+    "lead": "Edelstein Martin & Nelson",
+    "email": "lnelson@law-pa.com",
+    "error": "SENDGRID_API_KEY not set",
+    "date": "2026-07-16"
+  },
+  {
+    "type": "send_error",
+    "lead": "Law Offices Of Arthur R. Braitman, PLLC",
+    "email": "arbraitman@verizon.net",
+    "error": "SENDGRID_API_KEY not set",
+    "date": "2026-07-16"
+  },
+  {
+    "type": "send_error",
+    "lead": "Law Offices Of Eugene P Tinari",
+    "email": "eugene@etinarilaw.com",
+    "error": "SENDGRID_API_KEY not set",
+    "date": "2026-07-16"
+  },
+  {
+    "type": "send_error",
+    "lead": "Broadley's Plumbing, Heating & Air Conditioning",
+    "email": "christina@broadleys.net",
+    "error": "SENDGRID_API_KEY not set",
+    "date": "2026-07-16"
+  },
+  {
+    "type": "send_error",
+    "lead": "Linc Electric Inc",
+    "email": "lincelectric@gmail.com",
+    "error": "SENDGRID_API_KEY not set",
+    "date": "2026-07-16"
+  },
+  {
+    "type": "send_error",
+    "lead": "Chelsvig Electric",
+    "email": "info@chelsvigelectric.com",
+    "error": "SENDGRID_API_KEY not set",
+    "date": "2026-07-16"
+  },
+  {
+    "type": "send_error",
+    "lead": "Sandra E. Grzybicki Pediatric & Adolescent Dentistry",
+    "email": "dr.grzybicki@verizon.net",
+    "error": "SENDGRID_API_KEY not set",
+    "date": "2026-07-16"
+  },
+  {
+    "type": "send_error",
+    "lead": "Wahl Family Dentistry",
+    "email": "info@wahlfamilydentistry.com",
+    "error": "SENDGRID_API_KEY not set",
+    "date": "2026-07-16"
+  },
+  {
+    "type": "send_error",
+    "lead": "Main Street Children's Dentistry & Orthodontics",
+    "email": "mselktonofc@dentalcarealliance.com",
+    "error": "SENDGRID_API_KEY not set",
+    "date": "2026-07-16"
+  },
+  {
+    "type": "send_error",
+    "lead": "Restore Hyper Wellness",
+    "email": "frontdeskPA007@restore.com",
+    "error": "SENDGRID_API_KEY not set",
+    "date": "2026-07-16"
+  }
+]
