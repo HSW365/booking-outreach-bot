@@ -38,6 +38,7 @@ PLACEHOLDER_EMAIL_PATTERNS = (
     "@yoursite.com", "@yourdomain.com", "@website.com", "@company.com",
     "@sample.com", "@yourcompany.com",
     "user@", "you@", "name@", "test@", "someone@", "youremail@",
+    "sentry-next.wixpress.com", "wixpress.com", "sentry.io",
 )
 
 

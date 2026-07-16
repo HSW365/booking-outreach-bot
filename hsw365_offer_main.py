@@ -93,6 +93,13 @@ def _run_sequence(leads, sent_count):
                 sent_count += 1
             # touches_sent == 3 -> sequence complete, no further action.
         except Exception as e:
+            _append_log({
+                "type": "send_error",
+                "lead": lead["name"],
+                "email": lead.get("email"),
+                "error": str(e),
+                "date": datetime.date.today().isoformat(),
+            })
             print(f"[offer_main]   FAILED touch for {lead['name']}: {e}")
 
     return sent_count
