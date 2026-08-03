@@ -2390,5 +2390,18 @@
     "found_at": "2026-07-17",
     "last_contacted": null,
     "touches_sent": 0
+  },
+  {
+    "place_id": "node/14061103306",
+    "name": "Thomas and Son Landscaping LLC",
+    "address": "525 NJ-73, Marlton, NJ",
+    "phone": "+1 609-415-3735",
+    "website": "https://thomasandsonlandscaping.com/",
+    "email": null,
+    "source_query": "landscaping company",
+    "status": "found",
+    "found_at": "2026-08-03",
+    "last_contacted": null,
+    "touches_sent": 0
   }
 ]
