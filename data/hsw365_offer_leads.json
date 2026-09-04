@@ -2403,5 +2403,18 @@
     "found_at": "2026-08-03",
     "last_contacted": null,
     "touches_sent": 0
+  },
+  {
+    "place_id": "node/3416621454",
+    "name": "Next Level Endodontics",
+    "address": "1601 Walnut Street, Philadelphia",
+    "phone": "+1-215-278-7827",
+    "website": "https://nextlevelendodontics.com/",
+    "email": null,
+    "source_query": "dentist",
+    "status": "found",
+    "found_at": "2026-09-04",
+    "last_contacted": null,
+    "touches_sent": 0
   }
 ]
