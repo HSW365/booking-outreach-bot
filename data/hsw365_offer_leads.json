@@ -2416,5 +2416,18 @@
     "found_at": "2026-09-04",
     "last_contacted": null,
     "touches_sent": 0
+  },
+  {
+    "place_id": "node/314922375",
+    "name": "KPot Korean BBQ & Hot Pot",
+    "address": "1500 Almonesson Road, Deptford",
+    "phone": "+18563025011",
+    "website": "https://thekpot.com/location/deptford-almonesson-rd/",
+    "email": null,
+    "source_query": "restaurant",
+    "status": "found",
+    "found_at": "2026-09-06",
+    "last_contacted": null,
+    "touches_sent": 0
   }
 ]
