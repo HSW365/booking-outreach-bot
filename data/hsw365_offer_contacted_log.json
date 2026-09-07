@@ -5556,5 +5556,110 @@
     "email": "delawarelandscape@gmail.com",
     "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials 6a1803df08f44-91040673ce0sm74142046d6.25 - gsmtp')",
     "date": "2026-09-06"
+  },
+  {
+    "type": "send_error",
+    "lead": "RE/MAX@HOME",
+    "email": "info@ocfrealty.com",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5a478bee46e88-3339af25062sm47271570eec.16 - gsmtp')",
+    "date": "2026-09-07"
+  },
+  {
+    "type": "send_error",
+    "lead": "Edelstein Martin & Nelson",
+    "email": "lnelson@law-pa.com",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5a478bee46e88-3339befe870sm33242441eec.30 - gsmtp')",
+    "date": "2026-09-07"
+  },
+  {
+    "type": "send_error",
+    "lead": "Law Offices Of Arthur R. Braitman, PLLC",
+    "email": "arbraitman@verizon.net",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5a478bee46e88-3339bbf1feesm30025009eec.26 - gsmtp')",
+    "date": "2026-09-07"
+  },
+  {
+    "type": "send_error",
+    "lead": "Law Offices Of Eugene P Tinari",
+    "email": "eugene@etinarilaw.com",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials a92af1059eb24-143243bfbe3sm27870862c88.11 - gsmtp')",
+    "date": "2026-09-07"
+  },
+  {
+    "type": "send_error",
+    "lead": "Broadley's Plumbing, Heating & Air Conditioning",
+    "email": "christina@broadleys.net",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials a92af1059eb24-14332405e92sm22566817c88.8 - gsmtp')",
+    "date": "2026-09-07"
+  },
+  {
+    "type": "send_error",
+    "lead": "Linc Electric Inc",
+    "email": "lincelectric@gmail.com",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5a478bee46e88-3339bdf26c5sm30687999eec.27 - gsmtp')",
+    "date": "2026-09-07"
+  },
+  {
+    "type": "send_error",
+    "lead": "Chelsvig Electric",
+    "email": "info@chelsvigelectric.com",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5a478bee46e88-3339bdf26c5sm30688031eec.27 - gsmtp')",
+    "date": "2026-09-07"
+  },
+  {
+    "type": "send_error",
+    "lead": "Sandra E. Grzybicki Pediatric & Adolescent Dentistry",
+    "email": "dr.grzybicki@verizon.net",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5a478bee46e88-3339885ca07sm33837795eec.1 - gsmtp')",
+    "date": "2026-09-07"
+  },
+  {
+    "type": "send_error",
+    "lead": "Wahl Family Dentistry",
+    "email": "info@wahlfamilydentistry.com",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5a478bee46e88-3339885d29esm33275011eec.2 - gsmtp')",
+    "date": "2026-09-07"
+  },
+  {
+    "type": "send_error",
+    "lead": "Main Street Children's Dentistry & Orthodontics",
+    "email": "mselktonofc@dentalcarealliance.com",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5a478bee46e88-333c9db92b1sm29742141eec.9 - gsmtp')",
+    "date": "2026-09-07"
+  },
+  {
+    "type": "send_error",
+    "lead": "Restore Hyper Wellness",
+    "email": "frontdeskPA007@restore.com",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials a92af1059eb24-1433171a97esm27888174c88.12 - gsmtp')",
+    "date": "2026-09-07"
+  },
+  {
+    "type": "send_error",
+    "lead": "Greenleaf Turf Solutions",
+    "email": "info@greenleafturfsolutions.com",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials a92af1059eb24-143243f780csm27061907c88.13 - gsmtp')",
+    "date": "2026-09-07"
+  },
+  {
+    "type": "send_error",
+    "lead": "Green Acres Lawn & Landscaping",
+    "email": "BE-THERE-SOON@2x.webp",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5a478bee46e88-3339b314cfcsm30138777eec.19 - gsmtp')",
+    "date": "2026-09-07"
+  },
+  {
+    "type": "send_error",
+    "lead": "Four Seasons Total Landscaping",
+    "email": "office@fstl1992.com",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5a478bee46e88-338f7bad290sm1327436eec.14 - gsmtp')",
+    "date": "2026-09-07"
+  },
+  {
+    "type": "send_error",
+    "lead": "Delaware Lawn & Landscape",
+    "email": "delawarelandscape@gmail.com",
+    "error": "(535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5a478bee46e88-3369856a9f7sm11869474eec.5 - gsmtp')",
+    "date": "2026-09-07"
   }
 ]
