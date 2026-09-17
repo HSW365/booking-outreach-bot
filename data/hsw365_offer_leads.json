@@ -2429,5 +2429,18 @@
     "found_at": "2026-09-06",
     "last_contacted": null,
     "touches_sent": 0
+  },
+  {
+    "place_id": "node/4798007647",
+    "name": "APLC - Associated Property Loss Consultants",
+    "address": "15 Beideman Ave., Cherry Hill, NJ",
+    "phone": "+1-844-533-9049",
+    "website": "https://www.wehandleinsuranceclaims.com/",
+    "email": null,
+    "source_query": "insurance agency",
+    "status": "found",
+    "found_at": "2026-09-17",
+    "last_contacted": null,
+    "touches_sent": 0
   }
 ]
