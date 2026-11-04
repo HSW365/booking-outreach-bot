@@ -2442,5 +2442,18 @@
     "found_at": "2026-09-17",
     "last_contacted": null,
     "touches_sent": 0
+  },
+  {
+    "place_id": "node/4847618862",
+    "name": "Anderson Insurance Agency",
+    "address": "295 New Jersey 72 East, Manahawkin, NJ",
+    "phone": "+1 609-597-8507",
+    "website": "https://aiainsure.com/",
+    "email": null,
+    "source_query": "insurance agency",
+    "status": "found",
+    "found_at": "2026-11-04",
+    "last_contacted": null,
+    "touches_sent": 0
   }
 ]
