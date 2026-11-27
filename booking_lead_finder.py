@@ -91,6 +91,46 @@ def find_email_on_site(website):
     return None
 
 
+def free_leads():
+    """Free fallback (OpenStreetMap, no key): organizations within range that publish an email."""
+    near = f"(around:{config.SEARCH_RADIUS_METERS},{config.SEARCH_LAT},{config.SEARCH_LNG})"
+    kinds = '["amenity"~"^(school|college|university|library|community_centre|theatre|arts_centre|events_venue)$"]'
+    parts = "".join(f'nwr{near}{k}["{e}"];' for k in (kinds, '["club"~"^(veterans|youth)$"]')
+                    for e in ("email", "contact:email"))
+    for url in ("https://overpass-api.de/api/interpreter", "https://overpass.kumi.systems/api/interpreter",
+                "https://overpass.private.coffee/api/interpreter"):
+        try:
+            r = requests.post(url, data={"data": f"[out:json][timeout:120];({parts});out tags;"}, timeout=150,
+                              headers={"User-Agent": "HSW365-Booking/1.0 (hsw365media@gmail.com)"})
+            if r.status_code == 200:
+                return r.json().get("elements", [])
+            print(f"[lead_finder]   {url} -> {r.status_code}")
+        except (requests.RequestException, ValueError) as e:
+            print(f"[lead_finder]   {url} failed: {e}")
+    return []
+
+
+def add_free_leads(leads):
+    known = {(l.get("email") or "").lower() for l in leads}
+    added = 0
+    for el in free_leads():
+        t = el.get("tags", {})
+        email = (t.get("email") or t.get("contact:email") or "").split(";")[0].strip().lower()
+        name = t.get("name")
+        if not name or not EMAIL_RE.fullmatch(email) or email in known or email.endswith((".png", ".jpg", ".webp")):
+            continue
+        known.add(email)
+        leads.append({
+            "place_id": f"osm-{el.get('type')}-{el.get('id')}", "name": name,
+            "address": ", ".join(x for x in (t.get("addr:city"), t.get("addr:state")) if x) or None,
+            "phone": t.get("phone"), "website": t.get("website"), "email": email,
+            "source_query": f"openstreetmap {t.get('amenity') or t.get('club')}", "status": "found",
+            "found_at": time.strftime("%Y-%m-%d"), "last_contacted": None, "followups_sent": 0,
+        })
+        added += 1
+    return added
+
+
 def run():
     leads = _load_json(config.LEADS_FILE, [])
     known_place_ids = {lead["place_id"] for lead in leads if lead.get("place_id")}
@@ -132,6 +172,9 @@ def run():
             known_place_ids.add(place_id)
             new_count += 1
             print(f"[lead_finder]   + {name} — email: {email or 'NOT FOUND'}")
+
+    if not new_count:
+        new_count = add_free_leads(leads)
 
     _save_json(config.LEADS_FILE, leads)
     print(f"[lead_finder] done. {new_count} new leads added. {len(leads)} total in file.")

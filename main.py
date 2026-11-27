@@ -121,11 +121,7 @@ def run():
     print(f"[main] ANTHROPIC_API_KEY set: {bool(config.ANTHROPIC_API_KEY)}")
     print(f"[main] SMTP_USER set: {bool(config.SMTP_USER)}")
 
-    if config.GOOGLE_PLACES_API_KEY:
-        booking_lead_finder.run()
-    else:
-        print("[main] GOOGLE_PLACES_API_KEY not set — skipping lead discovery, "
-              "working off existing data/leads.json only.")
+    booking_lead_finder.run()
 
     leads = _load_json(config.LEADS_FILE, [])
     if not leads:

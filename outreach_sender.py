@@ -35,6 +35,10 @@ def send_via_sendgrid(to_email, subject, body, from_name=None, reply_to=None):
         raise RuntimeError(f"SendGrid error {resp.status_code}: {resp.text}")
 
 
+class LoginRejected(SystemExit):
+    pass
+
+
 def send_via_smtp(to_email, subject, body, from_name=None, reply_to=None):
     if not (config.SMTP_USER and config.SMTP_PASSWORD):
         raise RuntimeError("SMTP_USER / SMTP_PASSWORD not set")
@@ -47,7 +51,10 @@ def send_via_smtp(to_email, subject, body, from_name=None, reply_to=None):
 
     with smtplib.SMTP(config.SMTP_HOST, config.SMTP_PORT) as server:
         server.starttls()
-        server.login(config.SMTP_USER, config.SMTP_PASSWORD)
+        try:
+            server.login(config.SMTP_USER, config.SMTP_PASSWORD)
+        except smtplib.SMTPAuthenticationError:
+            raise LoginRejected("Gmail rejected SMTP_PASSWORD. Update that repo secret with a new Gmail app password.")
         server.sendmail(config.SMTP_USER, [to_email], msg.as_string())
 
 

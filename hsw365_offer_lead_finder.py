@@ -141,7 +141,7 @@ def find_email_on_site(website):
                 match = EMAIL_RE.search(r.text)
                 if match:
                     email = match.group(0)
-                    if email.lower().endswith((".png", ".jpg", ".gif")):
+                    if email.lower().endswith((".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg")):
                         continue
                     if _is_placeholder_email(email):
                         continue
